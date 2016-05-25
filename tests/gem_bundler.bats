@@ -116,6 +116,6 @@ teardown() {
     [[ $status = 0 ]]
     [[ ${lines[${#lines[@]}-1]} = "rake, version 11.1.0" ]]
     link=$(readlink .vagga/bundle-lock)
-    echo Container: $link
+    echo "Container: $link"
     [[ $link = ".roots/bundle-lock.03e2d1cb/root" ]]
 }
