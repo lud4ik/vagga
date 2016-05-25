@@ -345,7 +345,8 @@ impl BuildStep for GemBundle {
             .map(|dir| dir.join("Gemfile.lock"))
             .ok_or("Gemfile should be under /work".to_owned()));
         if gemlock.exists() {
-            try!(hash.file(&gemlock, None, None)
+            // we don't care file owner for this case
+            try!(hash.file(&gemlock, Some(0), Some(0))
                 .map_err(|e| VersionError::Io(e, gemlock)));
         }
 
